@@ -29,7 +29,7 @@ export default function VerifyProof({ proof: rawProof, repoName,userName, issueI
   async function claimPrize() {
     try {
       writeContract({
-        address: '0x0dbe2f41C098FA09243B44BCb0966829034Cd012',
+        address: '0xa80fd684430159D35ce22dC137315353Bb9d9326',
         abi,
         functionName: "claimReward",
         args: [`${repoName}/${userName}`, issueId, proof],

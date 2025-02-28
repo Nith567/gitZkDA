@@ -29,7 +29,7 @@ export function Header() {
   const claimFaucet =async()=>{ 
        try {
       writeContract({
-        address: '0x7b27EcE7a1bc3528Ec2cc2506f843531010A77b6',
+        address: '0xD0f738050ccbBB66CD8098378b09fd62075D43b8',
         abi:usdcAbi,
         functionName: "claimFaucet",
         args: [3000],
@@ -69,7 +69,7 @@ export function Header() {
               <Button onClick={() => claimFaucet()} variant="outline">claim Faucet</Button>
 
             <Link href="https://github.com/apps/bountybot324">
-              <Button className="w-full">Register Repo</Button>
+              <Button className="w-full">Github Bot</Button>
             </Link>
           </div>
           

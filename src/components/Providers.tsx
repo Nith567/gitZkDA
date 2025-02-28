@@ -10,7 +10,7 @@ import { http } from "wagmi";
 import * as React from "react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 import { type ThemeProviderProps } from "next-themes/dist/types";
-import { arbitrumSepolia, baseSepolia } from "wagmi/chains";
+import {manta } from "wagmi/chains";
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
@@ -18,24 +18,24 @@ const config = getDefaultConfig({
   appName: "zkGitDA",
   projectId:
     process.env.NEXT_PUBLIC_PROJECT_ID || "3edba4009c97c98400b0c8df8ca3d590",
-  chains: [baseSepolia],
+  chains: [manta],
   transports: {
-    [baseSepolia.id]: http(
-      "https://base-sepolia.g.alchemy.com/v2/POcytJtZjkzStgaMseE9BxpHexaC4Tfj"
+    [manta.id]: http(
+      "https://manta-pacific.drpc.org"
     ),
   },
   ssr: true,
 });
 
 export const walletClient = createWalletClient({
-  chain: baseSepolia,
+  chain: manta,
   //@ts-ignore
   transport: http(),
 });
 export const publicClient = createPublicClient({
-  chain: baseSepolia,
+  chain: manta,
   transport: http(
-    "https://base-sepolia.g.alchemy.com/v2/POcytJtZjkzStgaMseE9BxpHexaC4Tfj"
+    "https://manta-pacific.drpc.org"
   ),
 });
 

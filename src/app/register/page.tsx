@@ -39,8 +39,8 @@ export default function RegisterRepo() {
       [name]: value,
     }))
   }
-    const usdcAddress = "0x7b27EcE7a1bc3528Ec2cc2506f843531010A77b6"; 
-    const contractAddress="0x0dbe2f41C098FA09243B44BCb0966829034Cd012"
+    const usdcAddress = "0xD0f738050ccbBB66CD8098378b09fd62075D43b8"; 
+    const contractAddress="0xa80fd684430159D35ce22dC137315353Bb9d9326"
     const subscriptionCost = isYearly ? 200 : 20
 
   const ApproveFunds = async() => {
