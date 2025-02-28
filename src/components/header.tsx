@@ -63,6 +63,8 @@ export function Header() {
             <Link href="#faq" className="text-sm font-medium transition-colors hover:text-primary">
               FAQ
             </Link>
+
+            <ModeToggle/>
           </nav>
           
           <div className="hidden md:flex items-center gap-4">
