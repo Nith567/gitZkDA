@@ -63,7 +63,6 @@ Best value for committed organizations.
 
 🚀 **Start rewarding developers today with [zkgitDA](#)**!
 
-![image](https://github.com/user-attachments/assets/f8168d7f-dd73-4d35-a823-ff95b7120519)
 
 
 
