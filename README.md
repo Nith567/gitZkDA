@@ -1,1 +1,1 @@
-ZkReclaim protocol rewarding devs on Manta network 
+ZKTLS protocol rewarding devs on Manta network 
