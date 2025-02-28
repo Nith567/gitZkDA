@@ -7,42 +7,12 @@ import {
   useWriteContract,
   useWaitForTransactionReceipt,
 } from "wagmi";
-import { usdcAbi } from "../../utils/faucet-abi";
+
 
 export default function SubscriptionPay() {
 
-    const { data: hash, isPending, writeContract, error } = useWriteContract();
-    const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash });
-
-    const payMonthly = useCallback(async () => {
-        try {
-          await writeContract({
-            address: '0xCC69bBf42ee4a5f641D62516380Fc56252a048eE',
-            abi: usdcAbi,
-            functionName: "transfer",
-            args: ["0x2D62332066e2735DEbEaf71AFE343236C9Ee7a1e", 20],
-          });
-        } catch (err) {
-          console.error("Transaction error:", err);
-        }
-      }, [writeContract]);
-
-
-      const payYearly = useCallback(async () => {
-        try {
-          await writeContract({
-            address: '0xCC69bBf42ee4a5f641D62516380Fc56252a048eE',
-            abi: usdcAbi,
-            functionName: "transfer",
-            args: ["0x2D62332066e2735DEbEaf71AFE343236C9Ee7a1e", 200],
-          });
-        } catch (err) {
-          console.error("Transaction error:", err);
-        }
-      }, [writeContract]);
   return (
-   
-   
+
 <section id="pricing" className="w-full py-12 md:py-24 lg:py-32 bg-background">
 <div className="container px-4 md:px-6">
   <div className="flex flex-col items-center justify-center space-y-4 text-center">
@@ -93,7 +63,7 @@ export default function SubscriptionPay() {
             <span>Basic analytics dashboard</span>
           </li>
         </ul>
-        <button className="mt-8" onClick={payMonthly}>Subscribe Monthly</button>
+        <button className="mt-8">Subscribe Monthly</button>
       </div>
     </div>
     <div className="flex flex-col rounded-lg border bg-background shadow-sm relative overflow-hidden">
@@ -134,7 +104,7 @@ export default function SubscriptionPay() {
             <span>Priority support</span>
           </li>
         </ul>
-          <Button  onClick={payYearly} className="w-full mt-8">Subscribe Yearly</Button>
+          <Button className="w-full mt-8">Subscribe Yearly</Button>
       </div>
     </div>
   </div>

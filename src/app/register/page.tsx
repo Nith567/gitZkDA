@@ -8,6 +8,7 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Switch } from "@/components/ui/switch"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Footer } from "@/components/footer"
 import { Github, DollarSign } from "lucide-react"
@@ -15,10 +16,11 @@ import {
   useWriteContract,
   useWaitForTransactionReceipt,
 } from "wagmi";
-import { abi } from "../../../utils/abi"
-
+import { abi } from "../../../utils/zkabi"
+import { usdcAbi } from "../../../utils/faucet-abi"
 export default function RegisterRepo() {
   const router = useRouter()
+  const [isYearly, setIsYearly] = useState(false)
   const [formData, setFormData] = useState({
     repoName: "",
     repoOwner: "",
@@ -28,7 +30,7 @@ export default function RegisterRepo() {
     funds: 0
   })
   const { data: hash, isPending, writeContract, error } = useWriteContract();
-  const { isLoading: isConfirming, isSuccess: isConfirmed } = useWaitForTransactionReceipt({ hash });
+
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -37,41 +39,78 @@ export default function RegisterRepo() {
       [name]: value,
     }))
   }
+    const usdcAddress = "0x7b27EcE7a1bc3528Ec2cc2506f843531010A77b6"; 
+    const contractAddress="0x0dbe2f41C098FA09243B44BCb0966829034Cd012"
+    const subscriptionCost = isYearly ? 200 : 20
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log("Form submitted:", formData)
-    router.push("/dashboard")
+  const ApproveFunds = async() => {
+    try {
+    await writeContract({
+      address: usdcAddress,
+      abi: usdcAbi,
+      functionName: "approve",
+      args: [contractAddress, formData.funds * 1e6 + (isYearly ? 200 : 20)*1e6],
+    });
+      } catch (err) {
+        console.error("Transaction error:", err);
+      }
+    }
+  const paySubscription = async() => {
+    try {
+      await writeContract({
+        address: contractAddress,
+        abi,
+        functionName: "paySubscription",
+        args: [`${formData.repoOwner}/${formData.repoName}`,isYearly],
+      });
+      } catch (err) {
+        console.error("Transaction error:", err);
+      }
+    }
+
+
+
+
+    const handleSubmit = async (e: React.FormEvent) => {
+     e.preventDefault()
+     try {
+
+          await  writeContract({
+        address:contractAddress,
+        abi,
+        functionName: "registerRepo",
+        args: [`${formData.repoOwner}/${formData.repoName}`,formData.repoOwner,formData.repoName,[formData.easyReward,formData.mediumReward,formData.hardReward]],
+      });
+    } catch (err) {
+      console.log("Transaction error:", err);
+    }
+    }
+
+const PayFunds= async ()=>{
+  try{
+  await writeContract({
+    address: contractAddress,
+    abi,
+    functionName: "depositFunds",
+    args: [`${formData.repoOwner}/${formData.repoName}`,formData.funds * 1e6],
+  });
+}
+catch (err) {
+  console.error("Transaction error:", err);
+}
+}
+
+
+  const isFormValid = () => {
+    return (
+      formData.repoName &&
+      formData.repoOwner &&
+      formData.funds > 0 &&
+      formData.easyReward >= 0 &&
+      formData.mediumReward >= 0 &&
+      formData.hardReward >= 0
+    );
   }
-
-  const handleDepositFunds = (amount:string) => {
-      try {
-        writeContract({
-          address: '0xCC69bBf42ee4a5f641D62516380Fc56252a048eE',
-          abi,
-          functionName: "claimReward",
-          args: [amount],
-        });
-      } catch (err) {
-        console.error("Transaction error:", err);
-      }
-    }
-
-
-
-  const registerRepo = () => {
-      try {
-        writeContract({
-          address: '0xCC69bBf42ee4a5f641D62516380Fc56252a048eE',
-          abi,
-          functionName: "registerRepo",
-          args: [formData.repoName,formData.repoOwner,formData.repoName,[formData.easyReward,,formData.mediumReward,formData.hardReward]],
-        });
-      } catch (err) {
-        console.error("Transaction error:", err);
-      }
-    }
-
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -166,15 +205,29 @@ export default function RegisterRepo() {
                   </div>
                 </div>
               </div>
-              <Button type="submit" className="w-full">
+              <div className="flex items-center space-x-2">
+                <Switch id="subscription-type" checked={isYearly} onCheckedChange={setIsYearly} />
+                <Label htmlFor="subscription-type">{isYearly ? "Yearly Subscription" : "Monthly Subscription"}</Label>
+              </div>
+              <div className="text-sm text-muted-foreground">
+                Subscription cost: {subscriptionCost} USDC {isYearly ? "per year" : "per month"}
+              </div>
+              <Button onClick={() => ApproveFunds()} variant="outline" className="w-full" disabled={!isFormValid()}>
+                <DollarSign className="mr-2 h-4 w-4" /> Approve
+              </Button>
+              <Button onClick={() => paySubscription()} variant="outline" className="w-full" disabled={!isFormValid()}>
+                <DollarSign className="mr-2 h-4 w-4" /> Pay Subscription
+              </Button>
+              <Button type="submit" className="w-full" disabled={!isFormValid()}>
                 Register Repository
+              </Button>
+              <Button onClick={() => PayFunds()} variant="outline" className="w-full" disabled={!isFormValid()}>
+                <DollarSign className="mr-2 h-4 w-4" /> Pay Funds
               </Button>
             </form>
           </CardContent>
           <CardFooter>
-            <Button onClick={()=>handleDepositFunds("23")} variant="outline" className="w-full">
-              <DollarSign className="mr-2 h-4 w-4" /> Deposit Funds
-            </Button>
+
           </CardFooter>
         </Card>
       </main>

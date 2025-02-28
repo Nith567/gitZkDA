@@ -6,8 +6,8 @@ import { Proof, ReclaimProofRequest } from "@reclaimprotocol/js-sdk";
 import VerifyProof from '@/components/verify-proof';
 
 
-export default function ContestDetails({ params }: { params: { repoName: string; issueId: string } }) {
-  const { repoName, issueId } = params; 
+export default function ContestDetails({ params }: { params: { repoName: string; userName:string,issueId: string } }) {
+  const { repoName, issueId,userName } = params; 
 
   const [ready, setReady] = useState<boolean>(false);
   const [proof, setProof] = useState<Proof>();
@@ -75,16 +75,16 @@ export default function ContestDetails({ params }: { params: { repoName: string;
   }
   return (
     <div className="max-w-4xl mx-auto min-h-screen p-8 bg-gradient-to-r from-blue-600 via-indigo-700 to-purple-800 rounded-xl shadow-2xl space-y-8 text-white">
-      <h1 className="text-3xl font-bold">Contest Details</h1>
+      <h1 className="text-3xl font-bold">Github Repo Details</h1>
       <p className="text-lg">Repository Name: <strong>{repoName}</strong></p>
-      <p className="text-lg">Issue ID: <strong>{issueId}</strong></p>
+      <p className="text-lg">PR 10: <strong>{issueId}</strong></p>
       {!requestUrl && (
               <button onClick={generateVerificationRequest}>
                 Create Claim QR Code
               </button>
             )}
             {requestUrl && <QRCode value={requestUrl} />}
-            {ready && <VerifyProof proof={proof} repoName={repoName} issueId={issueId}/>}
+            {ready && <VerifyProof proof={proof} repoName={repoName} userName={userName} issueId={issueId}/>}
     </div>
   );
 }
