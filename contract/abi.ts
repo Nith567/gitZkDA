@@ -1,4 +1,4 @@
-export const abi =[
+[
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
@@ -136,7 +136,7 @@ export const abi =[
 	},
 	{
 		"inputs": [],
-		"name": "OWNER",
+		"name": "Agent",
 		"outputs": [
 			{
 				"internalType": "address",
