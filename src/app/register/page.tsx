@@ -69,10 +69,7 @@ export default function RegisterRepo() {
     }
 
 
-
-
-    const handleSubmit = async (e: React.FormEvent) => {
-     e.preventDefault()
+    const RegisterRepo= async () => {
      try {
 
           await  writeContract({
@@ -86,6 +83,11 @@ export default function RegisterRepo() {
     }
     }
 
+    const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault()
+
+      console.log("handle submit")
+    }
 const PayFunds= async ()=>{
   try{
   await writeContract({
@@ -212,16 +214,16 @@ catch (err) {
               <div className="text-sm text-muted-foreground">
                 Subscription cost: {subscriptionCost} USDC {isYearly ? "per year" : "per month"}
               </div>
-              <Button onClick={() => ApproveFunds()} variant="outline" className="w-full" disabled={!isFormValid()}>
+              <Button onClick={ApproveFunds} variant="outline" className="w-full" disabled={!isFormValid()}>
                 <DollarSign className="mr-2 h-4 w-4" /> Approve
               </Button>
-              <Button onClick={() => paySubscription()} variant="outline" className="w-full" disabled={!isFormValid()}>
+              <Button onClick={ paySubscription} variant="outline" className="w-full" disabled={!isFormValid()}>
                 <DollarSign className="mr-2 h-4 w-4" /> Pay Subscription
               </Button>
-              <Button type="submit" className="w-full" disabled={!isFormValid()}>
-                Register Repository
+              <Button onClick={RegisterRepo } variant="outline" className="w-full" disabled={!isFormValid()}>
+                <DollarSign className="mr-2 h-4 w-4" /> Register Repo
               </Button>
-              <Button onClick={() => PayFunds()} variant="outline" className="w-full" disabled={!isFormValid()}>
+              <Button onClick={PayFunds} variant="outline" className="w-full" disabled={!isFormValid()}>
                 <DollarSign className="mr-2 h-4 w-4" /> Pay Funds
               </Button>
             </form>
