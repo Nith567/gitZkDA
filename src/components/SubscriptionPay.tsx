@@ -37,7 +37,7 @@ export default function SubscriptionPay() {
             <circle cx="20" cy="20" r="20" fill="#2775CA"/>
             <path d="M20 8C13.3726 8 8 13.3726 8 20C8 26.6274 13.3726 32 20 32C26.6274 32 32 26.6274 32 20C32 13.3726 26.6274 8 20 8ZM24.0504 24.5251H22.3383C22.3383 24.5251 22.3383 21.5778 22.3383 21.5442C22.3383 20.6899 21.9363 20.3215 21.3331 20.3215C20.5798 20.3215 20.3121 20.7235 20.3121 21.5442V24.5251H18.6C18.6 24.5251 18.6 19.5341 18.6 17.4748H20.3121V18.2617C20.3121 18.2617 20.8816 17.4748 22.1384 17.4748C23.4289 17.4748 24.0504 18.3627 24.0504 19.9737V24.5251ZM16.8879 16.6879C16.1009 16.6879 15.5651 16.1521 15.5651 15.4989C15.5651 14.8457 16.1009 14.3099 16.8879 14.3099C17.6412 14.3099 18.177 14.8457 18.177 15.4989C18.177 16.1521 17.6412 16.6879 16.8879 16.6879ZM17.7414 24.5251H15.9956V17.4748H17.7414V24.5251Z" fill="white"/>
           </svg>
-          25
+          20
           <span className="ml-1 text-xl font-medium text-muted-foreground">/month</span>
         </div>
         <p className="mt-4 text-muted-foreground">
@@ -57,10 +57,6 @@ export default function SubscriptionPay() {
           <li className="flex items-start">
             <CheckCircle className="mr-2 h-5 w-5 text-green-500 flex-shrink-0" />
             <span>PR difficulty labeling</span>
-          </li>
-          <li className="flex items-start">
-            <CheckCircle className="mr-2 h-5 w-5 text-green-500 flex-shrink-0" />
-            <span>Basic analytics dashboard</span>
           </li>
         </ul>
         <button className="mt-8">Subscribe Monthly</button>
@@ -94,10 +90,6 @@ export default function SubscriptionPay() {
           <li className="flex items-start">
             <CheckCircle className="mr-2 h-5 w-5 text-green-500 flex-shrink-0" />
             <span>PR difficulty labeling</span>
-          </li>
-          <li className="flex items-start">
-            <CheckCircle className="mr-2 h-5 w-5 text-green-500 flex-shrink-0" />
-            <span>Advanced analytics dashboard</span>
           </li>
           <li className="flex items-start">
             <CheckCircle className="mr-2 h-5 w-5 text-green-500 flex-shrink-0" />

@@ -45,8 +45,10 @@ export function Header() {
       <header className="sticky top-0 z-40 w-full border-b bg-background">
         <div className="container flex h-16 items-center justify-between py-4">
           <div className="flex items-center gap-2">
+          <Link href="/">
             <Code2 className="h-6 w-6" />
             <span className="text-xl font-bold">zkGitDA</span>
+            </Link>
           </div>
           
           {/* Desktop Navigation */}
