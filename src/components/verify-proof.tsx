@@ -32,7 +32,7 @@ export default function VerifyProof({ proof: rawProof, repoName,userName, issueI
         address: '0xa80fd684430159D35ce22dC137315353Bb9d9326',
         abi,
         functionName: "claimReward",
-        args: [`${repoName}/${userName}`, issueId, proof],
+        args: [`${userName}/${repoName}`, issueId, proof],
       });
     } catch (err) {
       console.error("Transaction error:", err);
