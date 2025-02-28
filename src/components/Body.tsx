@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { CompetitionEntryDialog } from "./Dialog";
 import axios from "axios";
 import {Input} from "@/components/ui/input"; 
 import { Code2, X, Menu, ArrowRight, Github, Zap, Shield, CheckCircle } from "lucide-react"
