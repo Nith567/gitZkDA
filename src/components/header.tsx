@@ -66,7 +66,7 @@ export function Header() {
           </nav>
           
           <div className="hidden md:flex items-center gap-4">
-              <Button onClick={() => claimFaucet()} variant="outline">claim Faucet</Button>
+              <Button onClick={() => claimFaucet()} variant="outline">Claim Faucet</Button>
 
             <Link href="https://github.com/apps/bountybot324">
               <Button className="w-full">Github Bot</Button>

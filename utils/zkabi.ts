@@ -1,4 +1,182 @@
-export const abi =[
+export const abi= [
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "repoId",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "issueId",
+				"type": "string"
+			},
+			{
+				"components": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "provider",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "parameters",
+								"type": "string"
+							},
+							{
+								"internalType": "string",
+								"name": "context",
+								"type": "string"
+							}
+						],
+						"internalType": "struct Claims.ClaimInfo",
+						"name": "claimInfo",
+						"type": "tuple"
+					},
+					{
+						"components": [
+							{
+								"components": [
+									{
+										"internalType": "bytes32",
+										"name": "identifier",
+										"type": "bytes32"
+									},
+									{
+										"internalType": "address",
+										"name": "owner",
+										"type": "address"
+									},
+									{
+										"internalType": "uint32",
+										"name": "timestampS",
+										"type": "uint32"
+									},
+									{
+										"internalType": "uint32",
+										"name": "epoch",
+										"type": "uint32"
+									}
+								],
+								"internalType": "struct Claims.CompleteClaimData",
+								"name": "claim",
+								"type": "tuple"
+							},
+							{
+								"internalType": "bytes[]",
+								"name": "signatures",
+								"type": "bytes[]"
+							}
+						],
+						"internalType": "struct Claims.SignedClaim",
+						"name": "signedClaim",
+						"type": "tuple"
+					}
+				],
+				"internalType": "struct Reclaim.Proof",
+				"name": "proof",
+				"type": "tuple"
+			}
+		],
+		"name": "claimReward",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "repoId",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "depositFunds",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "orgId",
+				"type": "string"
+			},
+			{
+				"internalType": "bool",
+				"name": "yearly",
+				"type": "bool"
+			}
+		],
+		"name": "paySubscription",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "repoId",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "githubOwner",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "githubRepo",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "rewards",
+				"type": "uint256[]"
+			}
+		],
+		"name": "registerRepo",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "repoId",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "issueId",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "winnerUsername",
+				"type": "string"
+			},
+			{
+				"internalType": "uint8",
+				"name": "difficulty",
+				"type": "uint8"
+			}
+		],
+		"name": "submitMergedUser",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
 	{
 		"inputs": [],
 		"stateMutability": "nonpayable",
@@ -136,7 +314,7 @@ export const abi =[
 	},
 	{
 		"inputs": [],
-		"name": "OWNER",
+		"name": "Agent",
 		"outputs": [
 			{
 				"internalType": "address",
@@ -145,123 +323,6 @@ export const abi =[
 			}
 		],
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "USDC",
-		"outputs": [
-			{
-				"internalType": "contract IERC20",
-				"name": "",
-				"type": "address"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "repoId",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "issueId",
-				"type": "string"
-			},
-			{
-				"components": [
-					{
-						"components": [
-							{
-								"internalType": "string",
-								"name": "provider",
-								"type": "string"
-							},
-							{
-								"internalType": "string",
-								"name": "parameters",
-								"type": "string"
-							},
-							{
-								"internalType": "string",
-								"name": "context",
-								"type": "string"
-							}
-						],
-						"internalType": "struct Claims.ClaimInfo",
-						"name": "claimInfo",
-						"type": "tuple"
-					},
-					{
-						"components": [
-							{
-								"components": [
-									{
-										"internalType": "bytes32",
-										"name": "identifier",
-										"type": "bytes32"
-									},
-									{
-										"internalType": "address",
-										"name": "owner",
-										"type": "address"
-									},
-									{
-										"internalType": "uint32",
-										"name": "timestampS",
-										"type": "uint32"
-									},
-									{
-										"internalType": "uint32",
-										"name": "epoch",
-										"type": "uint32"
-									}
-								],
-								"internalType": "struct Claims.CompleteClaimData",
-								"name": "claim",
-								"type": "tuple"
-							},
-							{
-								"internalType": "bytes[]",
-								"name": "signatures",
-								"type": "bytes[]"
-							}
-						],
-						"internalType": "struct Claims.SignedClaim",
-						"name": "signedClaim",
-						"type": "tuple"
-					}
-				],
-				"internalType": "struct Reclaim.Proof",
-				"name": "proof",
-				"type": "tuple"
-			}
-		],
-		"name": "claimReward",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "repoId",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			}
-		],
-		"name": "depositFunds",
-		"outputs": [],
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -342,24 +403,6 @@ export const abi =[
 		"type": "function"
 	},
 	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "orgId",
-				"type": "string"
-			},
-			{
-				"internalType": "bool",
-				"name": "yearly",
-				"type": "bool"
-			}
-		],
-		"name": "paySubscription",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"inputs": [],
 		"name": "reclaimAddress",
 		"outputs": [
@@ -370,34 +413,6 @@ export const abi =[
 			}
 		],
 		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "repoId",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "githubOwner",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "githubRepo",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256[]",
-				"name": "rewards",
-				"type": "uint256[]"
-			}
-		],
-		"name": "registerRepo",
-		"outputs": [],
-		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -433,34 +448,6 @@ export const abi =[
 		"inputs": [
 			{
 				"internalType": "string",
-				"name": "repoId",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "issueId",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "winnerUsername",
-				"type": "string"
-			},
-			{
-				"internalType": "uint8",
-				"name": "difficulty",
-				"type": "uint8"
-			}
-		],
-		"name": "submitMergedUser",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "string",
 				"name": "",
 				"type": "string"
 			}
@@ -471,6 +458,19 @@ export const abi =[
 				"internalType": "uint256",
 				"name": "",
 				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "USDC",
+		"outputs": [
+			{
+				"internalType": "contract IERC20",
+				"name": "",
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",

@@ -77,7 +77,7 @@ export default function ContestDetails({ params }: { params: { repoName: string;
     <div className="max-w-4xl mx-auto min-h-screen p-8 bg-gradient-to-r from-blue-600 via-indigo-700 to-purple-800 rounded-xl shadow-2xl space-y-8 text-white">
       <h1 className="text-3xl font-bold">Github Repo Details</h1>
       <p className="text-lg">Repository Name: <strong>{repoName}</strong></p>
-      <p className="text-lg">PR 10: <strong>{issueId}</strong></p>
+      <p className="text-lg">PR No: <strong>{issueId}</strong></p>
       {!requestUrl && (
               <button onClick={generateVerificationRequest}>
                 Create Claim QR Code
