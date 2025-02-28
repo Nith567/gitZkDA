@@ -1,1 +1,2 @@
-ZKTLS protocol rewarding devs on Manta network 
+zkTLS protocol rewarding devs on Manta network 
+
