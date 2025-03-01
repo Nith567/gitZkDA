@@ -1,5 +1,5 @@
 # zkgitDA
-
+> Our Dapp smart contracts live on L2-zk [Manta Pacific Network](https://chainlist.org/chain/169) on which Celestia as DA layer 
 ## 🚀 Revolutionizing Open-Source Rewards with zkTLS
 
 zkgitDA is an automated reward system for open-source contributors. It leverages **zkTLS** to validate contributions without revealing unnecessary data, ensuring privacy, transparency, and instant payouts in **USDC**.
